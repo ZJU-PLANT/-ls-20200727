@@ -1,0 +1,22 @@
+#coding=utf-8
+import xlwt
+
+f = xlwt.Workbook()  # 创建工作簿
+sheet1 = f.add_sheet(u'得分统计', cell_overwrite_ok=True)
+
+mdict = {"monkey":{"writing":80,"reading":60,"speaking":70,"listening":60},
+"grape":{"writing":100,"reading":80,"speaking":70,"listening":60}}
+
+sheet1.write(0,0,u'得分统计')
+sheet1.write(1,0,u'书法得分')
+sheet1.write(2,0,u'阅读得分')
+sheet1.write(3,0,u'演讲得分')
+sheet1.write(4,0,u'听力得分')
+temp = ['writing','reading','speaking','listening']
+
+for pos,name in enumerate(mdict):
+    sheet1.write(0,pos+1,name)
+    for p,v in enumerate(temp):
+        sheet1.write(p+1,pos+1,mdict[name][v])
+
+f.save('C:/Users/ls/Desktop/得分统计.xls')
