@@ -1,0 +1,23 @@
+#coding=utf-8
+import xlwt
+
+f = xlwt.Workbook()  # 创建工作簿
+sheet1 = f.add_sheet(u'葡小萄', cell_overwrite_ok=True)
+sheet2 = f.add_sheet(u'小葡萄', cell_overwrite_ok=True)
+
+row = 0
+temp = [u'姓名',u'年龄',u'学校',u'专业']
+for pos,v in enumerate(temp):
+    sheet1.write(row,pos,v)
+row += 1
+sheet1.write(row,0,u'葡萄')
+sheet1.write(row,1,18)
+sheet1.write(row,2,u'北京电影学院')
+row += 1
+sheet1.write(row,0,u'椰子')
+sheet1.write(row,1,20)
+sheet1.write(row,2,u'帝国国王科技大学')
+
+sheet1.write_merge(1,2,3,3,u'汉语言文学')
+
+f.save('C:/Users/ls/Desktop/xlwt_tutorial.xls')
